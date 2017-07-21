@@ -69,4 +69,21 @@ router.delete('/:id', function(req, res) {
   );//end findByIdAndRemove
 });//end delete
 
+router.put('/points/:id', function(req, res) {
+  console.log('new location: ', req.body);
+  //issue all mongoose commands through the schema created (Person)
+  Person.findByIdAndUpdate( //passing in objects as the paramaters
+    { _id: req.params.id }, //find the object we want to update by targeting its id
+    { $set: {internetPts: req.body.internetPts} }, //will only update points, but not overwrite the other existing data in the object
+    function(err, data) {
+      if(err) {
+        console.log('save error: ', err);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(201);
+      }//end if
+    }//end function
+  );//end findByIdAndUpdate
+});//end put
+
 module.exports = router;

@@ -30,11 +30,11 @@
               <div ng-repeat="person in peeps.people" class="well col-md-3">
                 <p>{{person.name}}</p>
                 <p>{{person.location}}</p>
-                <p>{{person.dateOfBirth}}</p>
+                <p>{{person.dateOfBirth | date: "fullDate"}}</p>
                 <p>{{person.internetPts}}</p>
                 <button ng-click="peeps.updatePerson(person._id)" class="btn btn-default">Update</button>
                 <button ng-click="peeps.deletePerson(person._id)" class="btn btn-danger">Delete</button>
-                <button ng-click="peeps.addInternetPoints(person._id)" class="btn btn-default">Add Points</button>
+                <button ng-click="peeps.addInternetPoints(person._id, person.internetPts)" class="btn btn-default">Add Points</button>
             </div>
           </div>
         </div>
